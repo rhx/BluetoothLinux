@@ -114,10 +114,12 @@ public struct L2CAPSocket: Sendable {
             protocolServiceMultiplexer: nil,
             channel: .att
         )
+        // For LE ATT fixed channel (CID 4), the PSM must be nil.
+        // Setting protocolServiceMultiplexer here causes the kernel to return EINVAL.
         let destinationSocketAddress = L2CAPSocketAddress(
             address: destinationAddress,
             addressType: AddressType(lowEnergy: destinationAddressType),
-            protocolServiceMultiplexer: .att,
+            protocolServiceMultiplexer: nil,
             channel: .att
         )
         let fileDescriptor = try SocketDescriptor.l2cap(localSocketAddress, [.closeOnExec, .nonBlocking])
