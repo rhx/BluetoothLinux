@@ -44,7 +44,7 @@ var package = Package(
     dependencies: [
         .package(
             url: "https://github.com/PureSwift/Bluetooth.git",
-            branch: "master"
+            from: "8.0.0"
         ),
         .package(
             url: "https://github.com/PureSwift/Socket.git",
